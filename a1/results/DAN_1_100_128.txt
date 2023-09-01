@@ -1,0 +1,6 @@
+Class Counts: tensor([2412, 2045], device='cuda:0')
+Class Proportion: tensor([54.1171, 45.8829], device='cuda:0')
+BEST VAL ACCURACY - 0.9080098721112856
+BEST VAL F1-SCORE - 0.90744235641832
+[[2217  195]
+ [ 220 1825]]
