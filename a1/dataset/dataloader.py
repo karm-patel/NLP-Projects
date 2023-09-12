@@ -7,7 +7,7 @@ import string
 
 class ClassificationDataset(Dataset):
 	
-	def __init__(self, emb_model, device = torch.device("cuda"), split = "train", dataset_no=0, embed_dim=300, mean=True, oversampling=1):
+	def __init__(self, emb_model, device = torch.device("cuda"), split = "train", dataset_no=0, embed_dim=300, mean=True, oversampling=1, oversampling_ratio=0.8):
 		assert split in ["train","valid"], "split must be in [train,valid]"
 		assert dataset_no in [0,1,2], "dataset_no must be in [0,1,2]"
 		
@@ -22,6 +22,10 @@ class ClassificationDataset(Dataset):
 		# preprocessing
 		df["text"] = df["text"].apply(lambda x: x.translate(str.maketrans('', '', string.punctuation)))
 		data = df["text"].apply(lambda x: word_tokenize(x)).to_list()
+
+		# print frequency stats
+		lens = torch.tensor([len(each) for each in data], dtype=torch.float32)
+		print(f"{split} SENTENCES LENGTH - MAX: {torch.max(lens).item()} MIN: {torch.min(lens).item()} AVG: {torch.mean(lens).item()}")
 
 		# debug
 		self.X = []
@@ -59,10 +63,10 @@ class ClassificationDataset(Dataset):
 			
 			for label,_ in enumerate(labels):
 				cnt = class_counts[label]
-				r = 1
+				r = oversampling_ratio
 				if cnt == max_count:
 					r = 1
-				X_i = self.X[self.y == label].repeat(((r*max_count)//cnt,1,1))
+				X_i = self.X[self.y == label].repeat(((r*max_count)//cnt,1))
 				y_i = self.y[self.y == label].repeat(((r*max_count)//cnt))
 				print(label, X_i.shape)
 				new_X.append(X_i)

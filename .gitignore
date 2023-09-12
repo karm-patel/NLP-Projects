@@ -1,3 +1,5 @@
 embeddings
 */**/.ipynb_checkpoints
 __pycache__
+bert-presentation
+ckpts

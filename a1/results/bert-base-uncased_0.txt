@@ -1,0 +1,119 @@
+BERT MODEL NAME = bert-base-uncased
+ONLY_FINETUNE = False
+BATCH_SIZE = 64
+OVERSAMPLING_RATIO = [1, 1, 1]
+Learning Rate = 5e-05
+EPOCHS = 5
+BEST VAL ACCURACY - 0.8569051580698835
+[[ 27   3   8]
+ [ 15 696  66]
+ [  2  78 307]]
+====================================================================
+BERT MODEL NAME = bert-base-uncased
+ONLY_FINETUNE = False
+BATCH_SIZE = 64
+OVERSAMPLING_RATIO = [1, 1, 1]
+Learning Rate = 0.0001
+EPOCHS = 5
+BEST VAL ACCURACY - 0.8502495840266223
+[[ 20  10   8]
+ [  4 667 106]
+ [  1  67 319]]
+====================================================================
+BERT MODEL NAME = bert-base-uncased
+ONLY_FINETUNE = False
+BATCH_SIZE = 64
+OVERSAMPLING_RATIO = [1, 1, 1]
+Learning Rate = 0.005
+EPOCHS = 5
+BEST VAL ACCURACY - 0.6464226289517471
+[[  0  38   0]
+ [  0 777   0]
+ [  0 387   0]]
+====================================================================
+BERT MODEL NAME = bert-base-uncased
+ONLY_FINETUNE = False
+BATCH_SIZE = 64
+OVERSAMPLING_RATIO = [20, 1, 2]
+Learning Rate = 5e-05
+EPOCHS = 5
+BEST VAL ACCURACY - 0.8544093178036606
+[[ 25   5   8]
+ [ 14 684  79]
+ [  3  68 316]]
+====================================================================
+BERT MODEL NAME = bert-base-uncased
+ONLY_FINETUNE = False
+BATCH_SIZE = 64
+OVERSAMPLING_RATIO = [20, 1, 2]
+Learning Rate = 0.0001
+EPOCHS = 5
+BEST VAL ACCURACY - 0.8502495840266223
+[[ 19   7  12]
+ [ 11 668  98]
+ [  1  59 327]]
+====================================================================
+BERT MODEL NAME = bert-base-uncased
+ONLY_FINETUNE = 0
+BATCH_SIZE = 32
+OVERSAMPLING_RATIO = [1, 1, 1]3
+Learning Rate = 0.0001
+EPOCHS = 10
+BEST VAL ACCURACY - 0.8544093178036606
+BEST MACRO F1 - 0.75468272731064
+[[ 1  0  0]
+ [ 0 10  2]
+ [ 0  1  4]]
+====================================================================
+BERT MODEL NAME = bert-base-uncased
+ONLY_FINETUNE = 0
+BATCH_SIZE = 32
+OVERSAMPLING_RATIO = [1, 1, 1]
+Learning Rate = 0.0001
+EPOCHS = 5
+BEST VAL ACCURACY - 0.8244592346089851
+BEST MACRO F1 - 0.7563994860615842
+BEST EPOCH - 3
+[[ 23   9   6]
+ [ 11 634 132]
+ [  1  52 334]]
+====================================================================
+BERT MODEL NAME = bert-base-uncased
+ONLY_FINETUNE = 0
+BATCH_SIZE = 32
+OVERSAMPLING_RATIO = [1, 1, 1]
+Learning Rate = 5e-05
+EPOCHS = 5
+BEST VAL ACCURACY - 0.8527454242928453
+BEST MACRO F1 - 0.7693015874595831
+BEST EPOCH - 3
+[[ 21  11   6]
+ [  6 707  64]
+ [  2  88 297]]
+====================================================================
+BERT MODEL NAME = bert-base-uncased
+ONLY_FINETUNE = 0
+BATCH_SIZE = 32
+OVERSAMPLING_RATIO = [1, 1, 1]
+Learning Rate = 3e-05
+EPOCHS = 5
+BEST VAL ACCURACY - 0.8527454242928453
+BEST MACRO F1 - 0.7625363861771871
+BEST EPOCH - 3
+[[ 23  10   5]
+ [  8 725  44]
+ [  6 104 277]]
+====================================================================
+BERT MODEL NAME = bert-base-uncased
+ONLY_FINETUNE = 0
+BATCH_SIZE = 32
+OVERSAMPLING_RATIO = [18, 1, 2]
+Learning Rate = 5e-05
+EPOCHS = 5
+BEST VAL ACCURACY - 0.8519134775374376
+BEST MACRO F1 - 0.7738829441936123
+BEST EPOCH - 0
+[[ 31   4   3]
+ [ 17 689  71]
+ [ 12  71 304]]
+====================================================================

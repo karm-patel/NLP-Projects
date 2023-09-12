@@ -27,10 +27,10 @@ class DAN(nn.Module):
         y_pred_cpu = y_pred.to(torch.device("cpu"))
         return accuracy_score(y_true_cpu, y_pred_cpu)
     
-    def get_f1_score(self, y_true, y_pred):
+    def get_f1_score(self, y_true, y_pred, average="micro"):
         y_true_cpu = y_true.to(torch.device("cpu"))
         y_pred_cpu = y_pred.to(torch.device("cpu"))
-        f1 = f1_score(y_pred_cpu, y_true_cpu, average='macro')
+        f1 = f1_score(y_pred_cpu, y_true_cpu, average=average)
         return f1
 
 

@@ -3,6 +3,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("-D", default=0, type=int)
 parser.add_argument("-E", default=100, type=int)
 parser.add_argument("-B", default=128, type=int)
+parser.add_argument("-H", default=400, type=int) #hidden-size
 args = parser.parse_args()
 
 import os
@@ -16,7 +17,7 @@ warnings.filterwarnings(action = 'ignore')
 from tqdm import tqdm
 import sklearn
 import torch
-from dataset.dataloader import ClassificationDataset
+from dataset.dataloader_lstm import ClassificationDataset
 from torch.utils.data import DataLoader
 import matplotlib.pyplot as plt
 
@@ -46,23 +47,24 @@ emb_model = fasttext
 BATCH_SIZE = args.B
 DATASET_NO = args.D
 EPOCHS = args.E
+HIDDEN_SIZE = args.H
 classes_dict = {0:3, 1:2, 2:5} # DATASET_NO: N_Classes
 N_CLASSES = classes_dict[DATASET_NO]
 print("N Classes", N_CLASSES)
 
 # Dataloader =================================================================
 
-train_dataset = ClassificationDataset(emb_model, split="train", dataset_no=DATASET_NO, mean=False)
-test_dataset = ClassificationDataset(emb_model, split="valid", dataset_no=DATASET_NO, mean=False)
+train_dataset = ClassificationDataset(emb_model, split="train", dataset_no=DATASET_NO)
+test_dataset = ClassificationDataset(emb_model, split="valid", dataset_no=DATASET_NO)
 
 train_dataloader = DataLoader(train_dataset, batch_size=BATCH_SIZE)
 test_dataloader = DataLoader(test_dataset, batch_size=len(test_dataset)//4)
 
 # Model & Train=================================================================
 
-nn_model = LSTM(n_classes=N_CLASSES, emb_size=300, hidden_size=200).to(device)
+nn_model = LSTM(n_classes=N_CLASSES, emb_size=300, hidden_size=HIDDEN_SIZE).to(device)
 loss_fn = torch.nn.CrossEntropyLoss()
-optimizer = optimizer = torch.optim.Adam(nn_model.parameters(), lr=0.0005)
+optimizer  = torch.optim.Adam(nn_model.parameters(), lr=0.0005)
 
 
 running_loss = 0.
@@ -85,8 +87,8 @@ for epoch, _ in enumerate(tq):
     for X_train, y_train in train_dataloader:
         # Every data instance is an input + label pair
         # inputs, labels = X_train, y_train
-        h = torch.tensor(np.random.uniform(low = float(torch.min(X_train)), high = float(torch.max(X_train)), size = (1,len(y_train), 200)), dtype=X_train.dtype).to(device)
-        c = torch.tensor(np.random.uniform(low = float(torch.min(X_train)), high = float(torch.max(X_train)), size = (1,len(y_train), 200)), dtype=X_train.dtype).to(device)
+        h = torch.tensor(np.random.uniform(low = float(torch.min(X_train)), high = float(torch.max(X_train)), size = (1,len(y_train), HIDDEN_SIZE)), dtype=X_train.dtype).to(device)
+        c = torch.tensor(np.random.uniform(low = float(torch.min(X_train)), high = float(torch.max(X_train)), size = (1,len(y_train), HIDDEN_SIZE)), dtype=X_train.dtype).to(device)
         inputs, labels = (X_train, h, c), y_train
 
         # import pdb; pdb.set_trace()
@@ -112,8 +114,8 @@ for epoch, _ in enumerate(tq):
     with torch.no_grad():
         test_logits = []
         for (X_test, y_test) in test_dataloader:
-            h = torch.tensor(np.random.uniform(low = float(torch.min(X_test)), high = float(torch.max(X_test)), size = (1,len(y_test), 200)), dtype=X_test.dtype).to(device)
-            c = torch.tensor(np.random.uniform(low = float(torch.min(X_test)), high = float(torch.max(X_test)), size = (1,len(y_test), 200)), dtype=X_test.dtype).to(device)
+            h = torch.tensor(np.random.uniform(low = float(torch.min(X_test)), high = float(torch.max(X_test)), size = (1,len(y_test), HIDDEN_SIZE)), dtype=X_test.dtype).to(device)
+            c = torch.tensor(np.random.uniform(low = float(torch.min(X_test)), high = float(torch.max(X_test)), size = (1,len(y_test), HIDDEN_SIZE)), dtype=X_test.dtype).to(device)
             test_logit = nn_model((X_test, h, c))
             test_logits.append(test_logit)
         

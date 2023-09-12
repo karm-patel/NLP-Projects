@@ -1,0 +1,7 @@
+BATCH_SIZE = 32
+Learning Rate = 1e-05
+EPOCHS = 5
+BEST VAL ACCURACY - 0.737936794757843
+[[  0  21  17]
+ [  0 763  14]
+ [  0 263 124]]
