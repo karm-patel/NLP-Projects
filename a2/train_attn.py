@@ -31,8 +31,8 @@ from train_utils import asMinutes, timeSince, train_epoch, val_epoch
 gpu_device = torch.device("cuda")
 cpu_device = torch.device("cpu")
 gpu_device, cpu_device
-n_epochs = 75
-LR = 0.005
+n_epochs = 100
+LR = 0.008
 enc_hidden_size = 256
 
 train_dataset, train_dataloader = get_dataloader(split="train", batch_size=18000)
