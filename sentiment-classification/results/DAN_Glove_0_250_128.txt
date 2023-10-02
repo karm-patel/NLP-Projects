@@ -1,0 +1,36 @@
+OVERSAMPLING:  False 
+WEIGHT: tensor([1., 1., 1.], device='cuda:0') 
+Class Counts: tensor([ 38, 777, 387], device='cuda:0')
+Class Proportion: tensor([ 3.1614, 64.6423, 32.1963], device='cuda:0')
+BEST VAL ACCURACY - 0.7828618968386023
+BEST VAL Micro-F1-SCORE - 0.7828618968386023
+BEST VAL MAcro-F1-SCORE - 0.5082798897047432
+BEST VAL Weighted-F1-SCORE - 0.8012543388983405
+[[  0  17  21]
+ [  0 670 107]
+ [  0 130 257]]==================================================
+
+OVERSAMPLING:  True 
+WEIGHT: tensor([1., 1., 1.], device='cuda:0') 
+Class Counts: tensor([ 38, 777, 387], device='cuda:0')
+Class Proportion: tensor([ 3.1614, 64.6423, 32.1963], device='cuda:0')
+BEST VAL ACCURACY - 0.7778702163061564
+BEST VAL Micro-F1-SCORE - 0.7778702163061563
+BEST VAL MAcro-F1-SCORE - 0.614859678919461
+BEST VAL Weighted-F1-SCORE - 0.786180237513357
+[[ 10  14  14]
+ [ 17 686  74]
+ [ 10 149 228]]==================================================
+
+OVERSAMPLING:  False 
+WEIGHT: tensor([5., 1., 1.], device='cuda:0') 
+Class Counts: tensor([ 38, 777, 387], device='cuda:0')
+Class Proportion: tensor([ 3.1614, 64.6423, 32.1963], device='cuda:0')
+BEST VAL ACCURACY - 0.7762063227953411
+BEST VAL Micro-F1-SCORE - 0.7762063227953411
+BEST VAL MAcro-F1-SCORE - 0.6030240879047728
+BEST VAL Weighted-F1-SCORE - 0.7982470340236094
+[[ 12  10  16]
+ [ 19 641 117]
+ [ 11 126 250]]==================================================
+
